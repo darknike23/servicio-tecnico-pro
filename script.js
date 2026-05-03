@@ -1,20 +1,49 @@
-function sendMessage(){
-  let input = document.getElementById("userInput").value;
-  let chat = document.getElementById("chatbox");
+body{
+  font-family: Arial;
+  background:#0f172a;
+  color:white;
+  margin:0;
+}
 
-  chat.innerHTML += "<p>👤 " + input + "</p>";
+header{
+  text-align:center;
+  padding:30px;
+  background:linear-gradient(90deg,#0ea5e9,#22c55e);
+}
 
-  let res = "";
+.panel{
+  margin:20px;
+  padding:20px;
+  background:#111827;
+  border-radius:12px;
+}
 
-  if(input.includes("pantalla negra")){
-    res = "Puede ser RAM o GPU.";
-  }
-  else if(input.includes("lento")){
-    res = "Tu PC necesita limpieza o SSD.";
-  }
-  else{
-    res = "Escríbenos por WhatsApp para ayuda.";
-  }
+#chatbox{
+  height:300px;
+  overflow:auto;
+  background:black;
+  padding:10px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
 
-  chat.innerHTML += "<p>🤖 " + res + "</p>";
+input{
+  width:70%;
+  padding:10px;
+}
+
+button{
+  padding:10px;
+  background:#22c55e;
+  border:none;
+}
+
+.wsp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  padding:15px;
+  border-radius:50%;
+  text-decoration:none;
 }
