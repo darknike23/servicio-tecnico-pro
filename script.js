@@ -1,49 +1,21 @@
-body{
-  font-family: Arial;
-  background:#0f172a;
-  color:white;
-  margin:0;
-}
+async function sendMessage(){
 
-header{
-  text-align:center;
-  padding:30px;
-  background:linear-gradient(90deg,#0ea5e9,#22c55e);
-}
+  let input = document.getElementById("userInput").value;
+  let chat = document.getElementById("chatbox");
 
-.panel{
-  margin:20px;
-  padding:20px;
-  background:#111827;
-  border-radius:12px;
-}
+  chat.innerHTML += "<p>👤 " + input + "</p>";
 
-#chatbox{
-  height:300px;
-  overflow:auto;
-  background:black;
-  padding:10px;
-  border-radius:10px;
-  margin-bottom:10px;
-}
+  chat.innerHTML += "<p>🤖 Pensando...</p>";
 
-input{
-  width:70%;
-  padding:10px;
-}
+  let res = await fetch("https://TU-BACKEND.vercel.app/api/chat", {
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({mensaje:input})
+  });
 
-button{
-  padding:10px;
-  background:#22c55e;
-  border:none;
-}
+  let data = await res.json();
 
-.wsp{
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#25D366;
-  padding:15px;
-  border-radius:50%;
-  text-decoration:none;
+  chat.innerHTML += "<p style='color:#22c55e'>🤖 " + data.respuesta + "</p>";
 }
